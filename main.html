@@ -1,16 +1,102 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Toggler</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 50px;
+    }
+
+    h2 {
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    .toggle-container div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Hide default checkbox */
+    .toggle {
+      display: none;
+    }
+
+    /* Custom round checkbox */
+    .custom-checkbox {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid #bbb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+
+    /* When checked */
+    .toggle:checked + .custom-checkbox {
+      border-color: #28a745;
+      background: #28a745;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(40, 167, 69, 0.6);
+    }
+
+    span {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <h2>How do you want your project to be</h2>
+  <div class="toggle-container">
+    <div class="g1">
+      <input type="checkbox" id="good" class="toggle">
+      <label for="good" class="custom-checkbox">✔</label>
+      <span>Good</span>
+    </div>
+    <div class="g2">
+      <input type="checkbox" id="cheap" class="toggle">
+      <label for="cheap" class="custom-checkbox">✔</label>
+      <span>Cheap</span>
+    </div>
+    <div class="g3">
+      <input type="checkbox" id="fast" class="toggle">
+      <label for="fast" class="custom-checkbox">✔</label>
+      <span>Fast</span>
+    </div>
+  </div>
 
+  <script>
+    const toggles = document.querySelectorAll(".toggle");
+
+    toggles.forEach(toggle => {
+      toggle.addEventListener("change", () => {
+        let checked = [...toggles].filter(t => t.checked);
+        
+        if (checked.length > 2) {
+          // If 3rd is clicked, uncheck the first one
+          checked[0].checked = false;
+        }
+      });
+    });
+  </script>
 </body>
-
 </html>
