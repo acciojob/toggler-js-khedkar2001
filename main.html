@@ -23,10 +23,11 @@
       gap: 50px;
     }
 
-    .toggle-container div {
+    label {
       display: flex;
       flex-direction: column;
       align-items: center;
+      cursor: pointer;
     }
 
     /* Hide default checkbox */
@@ -41,7 +42,6 @@
       height: 34px;
       background: #ccc;
       border-radius: 34px;
-      cursor: pointer;
       transition: background 0.3s;
     }
 
@@ -58,7 +58,6 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
 
-    /* Checked state */
     .toggle:checked + .switch {
       background: #28a745;
     }
@@ -76,23 +75,23 @@
   </style>
 </head>
 <body>
-  <h2>How do you want your project to be</h2>
+  <h2>How do you want your project to be?</h2>
   <div class="toggle-container">
-    <div class="g1">
+    <label id="g1">
       <input type="checkbox" id="good" class="toggle">
-      <label for="good" class="switch"></label>
+      <div class="switch"></div>
       <span>Good</span>
-    </div>
-    <div class="g2">
+    </label>
+    <label id="g2">
       <input type="checkbox" id="cheap" class="toggle">
-      <label for="cheap" class="switch"></label>
+      <div class="switch"></div>
       <span>Cheap</span>
-    </div>
-    <div class="g3">
+    </label>
+    <label id="g3">
       <input type="checkbox" id="fast" class="toggle">
-      <label for="fast" class="switch"></label>
+      <div class="switch"></div>
       <span>Fast</span>
-    </div>
+    </label>
   </div>
 
   <script>
@@ -103,7 +102,6 @@
         let checked = [...toggles].filter(t => t.checked);
         
         if (checked.length > 2) {
-          // If 3rd is clicked, uncheck the first one
           checked[0].checked = false;
         }
       });
