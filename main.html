@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Toggler</title>
+  <title>Toggler Switch</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,7 +20,7 @@
     .toggle-container {
       display: flex;
       justify-content: center;
-      gap: 60px;
+      gap: 50px;
     }
 
     .toggle-container div {
@@ -34,30 +34,41 @@
       display: none;
     }
 
-    /* Custom round checkbox */
-    .custom-checkbox {
+    /* Switch styling */
+    .switch {
+      position: relative;
       width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 3px solid #bbb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height: 34px;
+      background: #ccc;
+      border-radius: 34px;
       cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      transition: background 0.3s;
     }
 
-    /* When checked */
-    .toggle:checked + .custom-checkbox {
-      border-color: #28a745;
+    .switch::after {
+      content: "";
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      left: 4px;
+      top: 4px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    /* Checked state */
+    .toggle:checked + .switch {
       background: #28a745;
-      color: #fff;
-      box-shadow: 0 0 15px rgba(40, 167, 69, 0.6);
+    }
+
+    .toggle:checked + .switch::after {
+      transform: translateX(26px);
     }
 
     span {
-      margin-top: 15px;
+      margin-top: 12px;
       font-weight: bold;
       font-size: 16px;
       color: #333;
@@ -69,17 +80,17 @@
   <div class="toggle-container">
     <div class="g1">
       <input type="checkbox" id="good" class="toggle">
-      <label for="good" class="custom-checkbox">✔</label>
+      <label for="good" class="switch"></label>
       <span>Good</span>
     </div>
     <div class="g2">
       <input type="checkbox" id="cheap" class="toggle">
-      <label for="cheap" class="custom-checkbox">✔</label>
+      <label for="cheap" class="switch"></label>
       <span>Cheap</span>
     </div>
     <div class="g3">
       <input type="checkbox" id="fast" class="toggle">
-      <label for="fast" class="custom-checkbox">✔</label>
+      <label for="fast" class="switch"></label>
       <span>Fast</span>
     </div>
   </div>
